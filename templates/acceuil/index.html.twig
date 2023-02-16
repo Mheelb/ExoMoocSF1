@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('acceuil') }}
+{% endblock %}
+
+{% block title %}Locky
+{% endblock %}
+
+{% block body %}
+	<h1 class="container mt-5">Les dernières demandes de prestation</h1>
+	<div class="container mt-5">
+		<div class="row align-items-start">
+			<div class="col">
+				<p>date de la demande</p>
+			</div>
+			<div class="col">
+				<p>Nom</p>
+			</div>
+			<div class="col">
+				<p>Extrait</p>
+			</div>
+			<div class="col">
+				<p>Rémunération</p>
+			</div>
+			<div class="col">
+				<p>Actions</p>
+			</div>
+		</div>
+	</div>
+	<div class="line container pt-3 mb-3">
+		<div class="row align-items-start">
+			<div class="col">
+				27/05/2022
+			</div>
+			<div class="col">
+				site web
+			</div>
+			<div class="col">
+				ceci est un extrait
+			</div>
+			<div class="col">
+				100€
+			</div>
+			<div class="col">
+				<button class="btn btn-primary">Voir</button>
+			</div>
+		</div>
+	</div>
+{% endblock %}
