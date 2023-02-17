@@ -29,23 +29,36 @@
 			</div>
 		</div>
 	</div>
-	<div class="line container pt-3 mb-3">
-		<div class="row align-items-start">
-			<div class="col">
-				27/05/2022
-			</div>
-			<div class="col">
-				site web
-			</div>
-			<div class="col">
-				ceci est un extrait
-			</div>
-			<div class="col">
-				100€
-			</div>
-			<div class="col">
-				<button class="btn btn-primary">Voir</button>
+
+	{% for prestation in prestations %}
+		<div class="line container pt-3 mb-3">
+			<div class="row align-items-start">
+				<div class="col">
+					{{ prestation.dateDeCreation }}
+				</div>
+				<div class="col">
+					{{ prestation.nom }}
+				</div>
+				<div class="col">
+					{{ prestation.extrait }}
+				</div>
+				<div class="col">
+					{{ prestation.remuneration }}
+					€
+				</div>
+				<div class="col">
+					<button class="btn btn-primary">Voir</button>
+				</div>
 			</div>
 		</div>
+	{% endfor %}
+
+	<div class="container mt-5">
+		<h2>Bienvenue au dernier utilisateur inscrit</h2>
+		{% for user in users %}
+			{{ user.nom }}
+			{{ user.prenom }}
+		{% endfor %}
 	</div>
+
 {% endblock %}

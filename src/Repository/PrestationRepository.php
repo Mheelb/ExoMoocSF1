@@ -39,20 +39,18 @@ class PrestationRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Prestation[] Returns an array of Prestation objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   /**
+    * @return Prestation[] Returns an array of Prestation objects
+    */
+   public function findPrestationWithLimitedNumber(int $max): array
+   {
+       return $this->createQueryBuilder('p')
+           ->orderBy('p.id', 'DESC')
+           ->setMaxResults($max)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 
 //    public function findOneBySomeField($value): ?Prestation
 //    {

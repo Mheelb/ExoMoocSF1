@@ -26,8 +26,8 @@ class User
     #[ORM\Column(length: 50)]
     private ?string $prenom = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $dateInscription = null;
+    #[ORM\Column(length: 10)]
+    private ?string $dateInscription = null;
 
     public function getId(): ?int
     {
@@ -82,12 +82,12 @@ class User
         return $this;
     }
 
-    public function getDateInscription(): ?\DateTimeInterface
+    public function getDateInscription(): ?string
     {
         return $this->dateInscription;
     }
 
-    public function setDateInscription(\DateTimeInterface $dateInscription): self
+    public function setDateInscription(string $dateInscription): self
     {
         $this->dateInscription = $dateInscription;
 

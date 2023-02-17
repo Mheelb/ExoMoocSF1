@@ -26,11 +26,11 @@ class Prestation
     #[ORM\Column]
     private ?float $remuneration = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $date_de_creation = null;
+    #[ORM\Column(length: 10)]
+    private ?string $dateDeCreation = null;
 
-    #[ORM\Column]
-    private ?int $numero = null;
+    #[ORM\Column(length: 20)]
+    private ?string $numero = null;
 
     public function getId(): ?int
     {
@@ -85,24 +85,24 @@ class Prestation
         return $this;
     }
 
-    public function getDateDeCreation(): ?\DateTimeInterface
+    public function getDateDeCreation(): ?string
     {
-        return $this->date_de_creation;
+        return $this->dateDeCreation;
     }
 
-    public function setDateDeCreation(\DateTimeInterface $date_de_creation): self
+    public function setDateDeCreation(string $dateDeCreation): self
     {
-        $this->date_de_creation = $date_de_creation;
+        $this->dateDeCreation = $dateDeCreation;
 
         return $this;
     }
 
-    public function getNumero(): ?int
+    public function getNumero(): ?string
     {
         return $this->numero;
     }
 
-    public function setNumero(int $numero): self
+    public function setNumero(string $numero): self
     {
         $this->numero = $numero;
 
