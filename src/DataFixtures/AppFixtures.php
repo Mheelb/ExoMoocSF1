@@ -8,9 +8,16 @@ use DateTime;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+
+    public function __construct(UserPasswordHasherInterface $userPasswordHasher)
+    {
+        $this->userPasswordHasher = $userPasswordHasher;
+    }
+
     public function load(ObjectManager $manager): void
     {
 
@@ -29,18 +36,21 @@ class AppFixtures extends Fixture
         for ($i = 0; $i < 10; $i++) {
             $user = new User();
             $user->setEmail($faker->email);
-            $user->setPassword("123");
+            $user->setPassword($this->userPasswordHasher->hashPassword($user, "123"));
             $user->setNom($faker->lastName);
             $user->setPrenom($faker->firstName);
             $user->setDateInscription($faker->date);
+            $user->setRoles(['ROLE_USER']);
             $manager->persist($user);
         }
 
-        $user->setEmail("user@gmail.com");
-        $user->setPassword("123");
-        $user->setNom("Houillon");
-        $user->setPrenom("Mattéo");
-        $user->setDateInscription("17-02-2023");
+        $user = new User();
+        $user->setEmail('user@gmail.com');
+        $user->setPassword($this->userPasswordHasher->hashPassword($user, "user"));
+        $user->setNom($faker->lastName);
+        $user->setPrenom($faker->firstName);
+        $user->setDateInscription($faker->date);
+        $user->setRoles(['ROLE_USER']);
         $manager->persist($user);
 
         $manager->flush();

@@ -1,45 +1,51 @@
-{# templates/login/index.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Connectez vous à Locky
+{% block title %}Ajouter une prestation
 {% endblock %}
 
 {% block stylesheets %}
 	{{ parent() }}
 {% endblock %}
 
-
 {% block body %}
-	{% if error %}
-		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-	{% endif %}
-
+	{{ form_start(form) }}
 	<section class="pt-5 pb-5 mt-0 align-items-center d-flex bg-dark" style="min-height: 100vh; background-size: cover; background-image: url(https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-0.3.5&amp;q=80&amp;fm=jpg&amp;crop=entropy&amp;cs=tinysrgb&amp;w=1920&amp;fit=max&amp;ixid=eyJhcHBfaWQiOjMyMDc0fQ&amp;s=c0d43804e2c7c93143fe8ff65398c8e9);">
 		<div class="container-fluid">
 			<div class="row  justify-content-center align-items-center d-flex-row text-center h-100">
 				<div class="col-12 col-md-4 col-lg-3   h-50 ">
 					<div class="card shadow">
 						<div class="card-body mx-auto">
-							<h4 class="card-title mt-3 text-center">Connectez vous à votre compte</h4>
-							<p class="text-center">Locky</p>
-							<form action="{{ path('app_login') }}" method="post">
-								<div class="form-group input-group mt-1">
-									<input id="username" name="_username" class="form-control" placeholder="Email" type="text" value="{{ last_username }}">
-								</div>
-								<div class="form-group input-group mt-1">
-                                    <input class="form-control" placeholder="Mot de passe" type="password" id="password" name="_password">
-								</div>
-								<div class="form-group mt-2">
+							<h4 class="card-title mt-3 text-center">Ajouter une préstation</h4>
+							<div class="form-group input-group mt-1">
+								{{ form_widget(form.nom) }}
+							</div>
+							<div class="form-group input-group mt-1">
+								{{ form_widget(form.extrait) }}
+							</div>
+							<div class="form-group input-group mt-1">
+								{{ form_widget(form.description) }}
+							</div>
+							<div class="form-group input-group mt-1">
+								{{ form_widget(form.remuneration) }}
+							</div>
+							<div class="form-group input-group mt-1">
+								{{ form_widget(form.numero) }}
+							</div>
+							<div class="form-group input-group mt-1">
+								{{ form_widget(form.dateDeCreation) }}
+							</div>
+							<div class="form-group mt-2">
 									<button type="submit" class="btn btn-primary btn-block">
-										Connexion
+										Ajouter
 									</button>
-								</div>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	{{ form_end(form) }}
+
 
 {% endblock %}
